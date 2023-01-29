@@ -3,6 +3,7 @@ const maxWindow = document.querySelector(".max");
 const minus = document.querySelector('.minus');
 const plus  = document.querySelector('.plus');
 const diapason_Alert = document.querySelector('.diapason');
+let diapason,randomNumber,tries;
 slider.oninput = function() {
     maxWindow.innerHTML = slider.value;
     diapAlert()
@@ -26,9 +27,29 @@ function diapAlert() {
     diapason_Alert.innerHTML = `you must guess number from 1 to ${slider.value}`
 }
 
+
+
 function NBG(){
-    let diapason = Number(slider.value)
-    let tries;
+    alert('ok')
+
+    // let number;
+    // for (let i=1;i<=tries;i++) {
+    //     number = +prompt('what number?')
+    //     if(number < RandomNumber) {
+    //         alert('твоє число замале')
+    //     }
+    //     else if(number > RandomNumber) {
+    //         alert('твоє число завелике')
+    //     }
+    //     alert(`ти використав ${i} спроб`)
+    //     if(RandomNumber==number){
+    //         alert('you win')
+    //         break;
+    //     }
+    // }
+}
+function generateNum(){
+        diapason = Number(slider.value)
 
     let triesButton = document.getElementsByName("tries")
     for(let i=0; i<triesButton.length;i++) {
@@ -47,30 +68,6 @@ function NBG(){
             }
         }
     }
-
-    while (true) {
-        if(isNaN(diapason)){
-            alert('you must write number');
-            diapason = +prompt('enter interval from 2 too ...');
-        }
-        else{
-            break;
-        }
-    }
-    let RandomNumber = Math.floor(Math.random() * diapason+1);
-    let number;
-    for (let i=1;i<=tries;i++) {
-        number = +prompt('what number?')
-        if(number < RandomNumber) {
-            alert('твоє число замале')
-        }
-        else if(number > RandomNumber) {
-            alert('твоє число завелике')
-        }
-        alert(`ти використав ${i} спроб`)
-        if(RandomNumber==number){
-            alert('you win')
-            break;
-        }
-    }
+    RandomNumber = Math.floor(Math.random() * diapason+1);
+    NBG()
 }
