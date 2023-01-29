@@ -7,10 +7,10 @@ slider.oninput = function() {
     maxWindow.innerHTML = slider.value;
     diapAlert()
 }
-const start = document.getElementById('start')
+const start = document.getElementById('start');
 start.addEventListener('click',NBG);
-minus.addEventListener('click',sliderminus)
-plus.addEventListener('click',sliderplus)
+minus.addEventListener('click',sliderminus);
+plus.addEventListener('click',sliderplus);
 
 function sliderminus() {
     slider.value--;
@@ -30,9 +30,22 @@ function NBG(){
     let diapason = Number(slider.value)
     let tries;
 
-    let triesbutton = document.getElementsByName("tries")
-    for(let i=0; i<triesbutton.length;i++) {
-        if (triesButton[i].checed){}
+    let triesButton = document.getElementsByName("tries")
+    for(let i=0; i<triesButton.length;i++) {
+        if (triesButton[i].checked){
+        if (triesButton[i].id == 'easy') {
+                tries = 15;
+            }
+            else if (triesButton[i].id == 'medium') {
+                tries = 10;
+            }
+            else if (triesButton[i].id == 'hard') {
+                tries = 5;
+            }
+            else if (triesButton[i].id == 'extreme') {
+                tries = 3;
+            }
+        }
     }
 
     while (true) {
