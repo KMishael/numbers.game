@@ -3,13 +3,16 @@ const maxWindow = document.querySelector(".max");
 const minus = document.querySelector('.minus');
 const plus  = document.querySelector('.plus');
 const diapason_Alert = document.querySelector('.diapason');
-let diapason,randomNumber,tries;
+let diapason, randomNumber, tries, number;;
+const numberField = document.getElementById("search-number"); 
+const infoField = document.querySelector('.info-wrapper')
+numberField.disabled = true;
 slider.oninput = function() {
     maxWindow.innerHTML = slider.value;
     diapAlert()
 }
 const start = document.getElementById('start');
-start.addEventListener('click',NBG);
+start.addEventListener('click',generateNum);
 minus.addEventListener('click',sliderminus);
 plus.addEventListener('click',sliderplus);
 
@@ -29,24 +32,37 @@ function diapAlert() {
 
 
 
-function NBG(){
-    alert('ok')
+function NBG(i){
+    document.querySelector(".number-icon").onclick = function() {
+        number = numberField.value;
+        numberField.value='';
+        if (i <= tries && i > 0) {
+                if(isNaN(number) || number == 0){
+                infoField.innerHTML = 'введіть,будь ласка,корректно' + `ти використав ${i} спроб`
+                i--
+                }
+                else if(number < RandomNumber) {
+                    infoField.innerHTML = 'твоє число замале' + `ти використав ${i} спроб`
+                }
+                else if(number > RandomNumber) {
+                    infoField.innerHTML = 'твоє число завелике' + `ти використав ${i} спроб`
+                }
+                
+                else if(number == RandomNumber){
+                    infoField.innerHTML = ('you win')
+                    start.disabled = false;
+                    numberField.disabled = true;
+                }
+            i++
+        }
+        else{
+            infoField.innerHTML = ('you are failed!!')
+            start.disabled = false;
+            numberField.disabled = true;
+        }
+    }
 
-    // let number;
-    // for (let i=1;i<=tries;i++) {
-    //     number = +prompt('what number?')
-    //     if(number < RandomNumber) {
-    //         alert('твоє число замале')
-    //     }
-    //     else if(number > RandomNumber) {
-    //         alert('твоє число завелике')
-    //     }
-    //     alert(`ти використав ${i} спроб`)
-    //     if(RandomNumber==number){
-    //         alert('you win')
-    //         break;
-    //     }
-    // }
+
 }
 function generateNum(){
         diapason = Number(slider.value)
@@ -69,5 +85,14 @@ function generateNum(){
         }
     }
     RandomNumber = Math.floor(Math.random() * diapason+1);
-    NBG()
+    numberField.disabled = false;
+    start.disabled = true;
+    NBG(1)
 }
+
+document.getElementById('search-number')/addEventListener('keypress',function(){
+    if(event.key == 'Enter'){
+        this.event.preventDefault();
+        this.document.querySelector('.number-icon').click();
+    }    
+})
