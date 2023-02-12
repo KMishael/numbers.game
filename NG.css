@@ -131,3 +131,25 @@ label {
     outline: 0;
     box-shadow: 0 0 0 0.15em rgba(150,150,150,0.15);
 }
+.history{
+    margin-top: 1em;
+}
+.history-title{
+    text-align:center ;
+    font-size: 2em;
+    font-weight: bold;
+}
+.history-item{
+    text-align:center;
+    font-size: 2em;
+    font-weight: bold;
+    color: blueviolet;
+    border: 2px dotted darkolivegreen;
+    margin: 10px;
+    width: 12vw;
+}
+.history-numbers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
